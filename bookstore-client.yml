@@ -14,7 +14,7 @@ spring:
 bookstore:
   circuit-breaker:
     configuration:
-      enabled: false
+      enabled: true
 
 resilience4j:
   circuitbreaker:
