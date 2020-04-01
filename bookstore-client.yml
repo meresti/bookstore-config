@@ -25,12 +25,12 @@ bookstore:
         failureRateThreshold: 50
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
-      instances:
-        titles:
-          baseConfig: default
-          waitDurationInOpenState: 90s
-        titles-another:
-          baseConfig: default
+    instances:
+      titles:
+        baseConfig: default
+        waitDurationInOpenState: 90s
+      titles-another:
+        baseConfig: default
 
     timelimiter:
       configs:
