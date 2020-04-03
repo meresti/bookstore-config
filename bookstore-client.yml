@@ -44,7 +44,7 @@ bookstore:
           titles:
             baseConfig: default
           titles-another:
-            baseConfig: titles-annotated
+            baseConfig: titles-another
 
 resilience4j:
   circuitbreaker:
