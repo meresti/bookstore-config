@@ -15,36 +15,36 @@ bookstore:
   circuit-breaker:
     configuration:
       enabled: true
-    configs:
-      default:
-        slidingWindowSize: 10
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowType: TIME_BASED
-        minimumNumberOfCalls: 20
-        waitDurationInOpenState: 50s
-        failureRateThreshold: 50
-        registerHealthIndicator: true
-        eventConsumerBufferSize: 10
-    instances:
-      titles:
-        baseConfig: default
-        waitDurationInOpenState: 90s
-      titles-another:
-        baseConfig: default
-
-    timelimiter:
-      configs:
-        default:
-          timeoutDuration: 3s
-          cancelRunningFuture: true
-        titles-another:
-          timeoutDuration: 2s
-          cancelRunningFuture: true
-      instances:
-        titles:
-          baseConfig: default
-        titles-another:
-          baseConfig: titles-annotated
+      circuit-breaker:
+        configs:
+          default:
+            slidingWindowSize: 10
+            permittedNumberOfCallsInHalfOpenState: 3
+            slidingWindowType: TIME_BASED
+            minimumNumberOfCalls: 20
+            waitDurationInOpenState: 50s
+            failureRateThreshold: 50
+            registerHealthIndicator: true
+            eventConsumerBufferSize: 10
+        instances:
+          titles:
+            baseConfig: default
+            waitDurationInOpenState: 90s
+          titles-another:
+            baseConfig: default
+      timelimiter:
+        configs:
+          default:
+            timeoutDuration: 3s
+            cancelRunningFuture: true
+          titles-another:
+            timeoutDuration: 2s
+            cancelRunningFuture: true
+        instances:
+          titles:
+            baseConfig: default
+          titles-another:
+            baseConfig: titles-annotated
 
 resilience4j:
   circuitbreaker:
