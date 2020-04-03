@@ -12,10 +12,10 @@ spring:
     base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
 
 bookstore:
-  circuit-breaker:
+  circuitbreaker:
     configuration:
       enabled: true
-      circuit-breaker:
+      circuitbreaker:
         configs:
           default:
             slidingWindowSize: 10
