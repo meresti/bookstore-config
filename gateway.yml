@@ -1,0 +1,27 @@
+spring:
+  gateway:
+    discovery:
+      locator:
+        enabled: true
+    routes:
+      - id: hello-service
+        uri: lb://hello-service
+        predicates:
+          - Path=/hello-service/**
+        filters:
+          - RewritePath=/hello-service/(?<path>.*), /$\{path}
+      - id: book-service
+        uri: lb://book-service
+        predicates:
+          - Path=/book-service/**
+        filters:
+          - RewritePath=/book-service/(?<path>.*), /$\{path}
+      - id: bookstore-client
+        uri: lb://bookstore-client
+        predicates:
+          - Path=/bookstore-client/**
+        filters:
+          - RewritePath=/bookstore-client/(?<path>.*), /$\{path}
+
+logging.level:
+  org.springframework.cloud.gateway: trace

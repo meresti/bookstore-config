@@ -1,13 +1,9 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  metrics:
-    tags:
-      application: ${spring.application.name}
-
+server:
+  port: ${PORT:8080}
 spring:
+  zipkin:
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
+
   jackson:
     serialization:
       indent_output: true
@@ -17,3 +13,12 @@ spring:
   sleuth:
     sampler:
       rate: 1000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    tags:
+      application: ${spring.application.name}

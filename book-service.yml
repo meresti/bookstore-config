@@ -1,9 +1,2 @@
-server:
-  port: ${PORT:8000}
-
-spring:
-  zipkin:
-    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
-
 #spring.h2.console.enabled=true
 #spring.h2.console.path=/h2
