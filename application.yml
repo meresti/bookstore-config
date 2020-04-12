@@ -1,0 +1,19 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+spring:
+  jackson:
+    serialization:
+      indent_output: true
+      write_dates_as_timestamps: false
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+
+  sleuth:
+    sampler:
+      rate: 1000
