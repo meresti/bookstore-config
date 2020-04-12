@@ -10,21 +10,30 @@ spring:
           predicates:
             - Path=/hello-service/**
           filters:
-            - CircuitBreaker=hello-service
+            - name: CircuitBreaker
+              args:
+                name: hello-service
+                fallbackUri: forward:/fallback
             - RewritePath=/hello-service/(?<path>.*), /$\{path}
         - id: book-service
           uri: lb://book-service
           predicates:
             - Path=/book-service/**
           filters:
-            - CircuitBreaker=book-service
+            - name: CircuitBreaker
+              args:
+                name: book-service
+                fallbackUri: forward:/fallback
             - RewritePath=/book-service/(?<path>.*), /$\{path}
         - id: bookstore-client
           uri: lb://bookstore-client
           predicates:
             - Path=/bookstore-client/**
           filters:
-            - CircuitBreaker=bookstore-client
+            - name: CircuitBreaker
+              args:
+                name: bookstore-client
+                fallbackUri: forward:/fallback
             - RewritePath=/bookstore-client/(?<path>.*), /$\{path}
 
 resilience4j:
