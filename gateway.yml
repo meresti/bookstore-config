@@ -10,19 +10,55 @@ spring:
           predicates:
             - Path=/hello-service/**
           filters:
+            - CircuitBreaker=hello-service
             - RewritePath=/hello-service/(?<path>.*), /$\{path}
         - id: book-service
           uri: lb://book-service
           predicates:
             - Path=/book-service/**
           filters:
+            - CircuitBreaker=book-service
             - RewritePath=/book-service/(?<path>.*), /$\{path}
         - id: bookstore-client
           uri: lb://bookstore-client
           predicates:
             - Path=/bookstore-client/**
           filters:
+            - CircuitBreaker=bookstore-client
             - RewritePath=/bookstore-client/(?<path>.*), /$\{path}
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 20
+        waitDurationInOpenState: 50s
+        failureRateThreshold: 50
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+    instances:
+      hello-service:
+        baseConfig: default
+      book-service:
+        baseConfig: default
+      bookstore-client:
+        baseConfig: default
+
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3s
+        cancelRunningFuture: true
+    instances:
+      hello-service:
+        baseConfig: default
+      book-service:
+        baseConfig: default
+      bookstore-client:
+        baseConfig: default
 
 logging.level:
   org.springframework.cloud.gateway: trace
