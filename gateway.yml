@@ -36,6 +36,20 @@ spring:
                 fallbackUri: forward:/fallback
             - RewritePath=/bookstore-client/(?<path>.*), /$\{path}
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+          facebook:
+            client-id: ${FACEBOOK_CLIENT_ID}
+            client-secret: ${FACEBOOK_CLIENT_SECRET}
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+
 resilience4j:
   circuitbreaker:
     configs:
