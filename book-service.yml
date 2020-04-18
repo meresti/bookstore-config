@@ -5,5 +5,8 @@ spring:
         jwt:
           issuer-uri: https://accounts.google.com
 
+logging.level:
+  org.springframework.security: debug
+
 #spring.h2.console.enabled=true
 #spring.h2.console.path=/h2
