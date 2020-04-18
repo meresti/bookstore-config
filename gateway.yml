@@ -4,6 +4,8 @@ spring:
       discovery:
         locator:
           enabled: true
+      default-filters:
+        - TokenRelay
       routes:
         - id: hello-service
           uri: lb://hello-service
@@ -21,7 +23,6 @@ spring:
             - Path=/book-service/**
           filters:
             - RewritePath=/book-service/(?<path>.*), /$\{path}
-            - TokenRelay=
             - name: CircuitBreaker
               args:
                 name: book-service
