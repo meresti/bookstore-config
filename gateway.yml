@@ -81,3 +81,5 @@ resilience4j:
 
 logging.level:
   org.springframework.cloud.gateway: trace
+  org.springframework.http.server.reactive: DEBUG
+  org.springframework.web.reactive: DEBUG
