@@ -3,7 +3,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9080/realms/bookstore-realm
+          issuer-uri: http://localhost:9080/realms/bookstore
 
 logging.level:
   org.springframework.security: debug
