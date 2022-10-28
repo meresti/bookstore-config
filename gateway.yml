@@ -42,9 +42,23 @@ spring:
     oauth2:
       client:
         registration:
-          google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
+          keycloak:
+            client-id: bookstore-client
+            client-secret: aYDovR372Og8K32gShW1mzViHHmbLhRz
+            clientName: Keycloak
+            authorization-grant-type: authorization_code
+            redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:9080/realms/bookstore-realm/protocol/openid-connect/auth
+            token-uri: http://localhost:9080/realms/bookstore-realm/protocol/openid-connect/token
+            user-info-uri: http://localhost:9080/realms/bookstore-realm/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:9080/realms/bookstore-realm/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
 
 resilience4j:
   circuitbreaker:
