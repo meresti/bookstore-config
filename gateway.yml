@@ -54,11 +54,11 @@ spring:
               - email
         provider:
           keycloak:
-            authorization-uri: http://localhost:9080/realms/bookstore/protocol/openid-connect/auth
-            token-uri: http://localhost:9080/realms/bookstore/protocol/openid-connect/token
-            user-info-uri: http://localhost:9080/realms/bookstore/protocol/openid-connect/userinfo
-            jwk-set-uri: http://localhost:9080/realms/bookstore/protocol/openid-connect/certs
-            issuer-uri: http://localhost:9080/realms/bookstore
+            authorization-uri: ${KEYCLOCK_SERVER_URL:http://localhost:9080}/realms/bookstore/protocol/openid-connect/auth
+            token-uri: ${KEYCLOCK_SERVER_URL:http://localhost:9080}/realms/bookstore/protocol/openid-connect/token
+            user-info-uri: ${KEYCLOCK_SERVER_URL:http://localhost:9080}/realms/bookstore/protocol/openid-connect/userinfo
+            jwk-set-uri: ${KEYCLOCK_SERVER_URL:http://localhost:9080}/realms/bookstore/protocol/openid-connect/certs
+            issuer-uri: ${KEYCLOCK_SERVER_URL:http://localhost:9080}/realms/bookstore
             user-name-attribute: preferred_username
 
 resilience4j:
