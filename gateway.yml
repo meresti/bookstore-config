@@ -44,7 +44,7 @@ spring:
         registration:
           keycloak:
             client-id: bookstore-client
-            client-secret: aYDovR372Og8K32gShW1mzViHHmbLhRz
+            client-secret: 1Wv1v7zOxy82GH5bSKl7DrVVGe5AKTET
             clientName: Keycloak
             authorization-grant-type: authorization_code
             redirectUri: '{baseUrl}/login/oauth2/code/{registrationId}'
