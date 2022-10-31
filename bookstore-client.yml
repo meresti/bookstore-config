@@ -4,6 +4,12 @@ spring:
       resilience4j:
         enabled: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOCK_SERVER_URL:http://localhost:9080}/realms/bookstore
+
 bookstore:
   circuitbreaker:
     configuration:
